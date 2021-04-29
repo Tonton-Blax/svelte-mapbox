@@ -17,6 +17,7 @@
 
   export let lat
   export let lng
+  export let draggable = false;
   export let label = 'Marker'
   export let popupClassName = 'beyonk-mapbox-popup'
   export let markerOffset = [ 0, 0 ]
@@ -32,9 +33,9 @@
 
   onMount(() => {
     if (element.hasChildNodes()) {
-      marker = new mapbox.Marker({ element, offset: markerOffset })
+      marker = new mapbox.Marker({ element, offset: markerOffset, draggable })
     } else {
-      marker = new mapbox.Marker({ color, offset: markerOffset })
+      marker = new mapbox.Marker({ color, offset: markerOffset, draggable })
     }
   
     if (popup) {
