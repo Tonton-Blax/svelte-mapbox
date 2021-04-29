@@ -56,7 +56,13 @@
       .setLngLat({ lng, lat })
       .addTo(map)
     
-    marker.on('dragend', () => { lng, lat } = marker.getLngLat());
+    function onDragEnd() {
+      const lngLat = marker.getLngLat();
+      lng =  lngLat.lng;
+      lat = lngLat.lat;
+    }
+ 
+    marker.on('dragend', onDragEnd);
 
     return () => marker.remove()
   })
